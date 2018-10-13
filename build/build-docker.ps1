@@ -1,5 +1,5 @@
-$Branch=$env:APPVEYOR_REPO_BRANCHAPPVEYOR_PULL_REQUEST_HEAD_REPO_BRANCH
-Write-Host $Branch
+$Branch=$env:APPVEYOR_REPO_BRANCH
+Write-Host branch: $Branch
 $IsMaster=$Branch -eq "master"
 if ($IsMaster) {
     exit 0
