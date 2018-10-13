@@ -3,7 +3,7 @@ Write-Host branch: $Branch
 
 $IsMaster=$Branch -eq "master"
 Write-Host is branch: $IsMaster
-if ($IsMaster) {
+if (!$IsMaster) {
     exit 0
 }
 

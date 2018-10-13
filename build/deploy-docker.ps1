@@ -1,6 +1,6 @@
 $Branch=$env:APPVEYOR_REPO_BRANCH
 $IsMaster=$Branch -eq "master"
-if ($IsMaster) {
+if (!$IsMaster) {
     exit 0
 }
 
