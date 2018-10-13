@@ -54,6 +54,9 @@ for:
       - ps: .\build\deploy-docker.ps1
     after_test:
       - dotnet publish ./src/ServiceHost/ServiceHost.csproj --configuration Release --no-restore --output ./../../artifacts /p:SolutionDir=$APPVEYOR_BUILD_FOLDER /p:SolutionName=DotNetRu.Server
+    test_script:
+      - dotnet build ./test/ServiceHost.Tests/ServiceHost.Tests.csproj --configuration Release /p:SolutionDir=$APPVEYOR_BUILD_FOLDER /p:SolutionName=DotNetRu.Server
+      - dotnet test ./test/ServiceHost.Tests/ServiceHost.Tests.csproj --configuration Release --no-build
 
 build:
   project: DotNetRu.Server.sln
@@ -62,8 +65,8 @@ build:
   publish_core_console: false
   verbosity: minimal
 
-test_script:
- - dotnet build ./test/ServiceHost.Tests/ServiceHost.Tests.csproj --configuration Release /p:SolutionDir=$APPVEYOR_BUILD_FOLDER /p:SolutionName=DotNetRu.Server
- - dotnet test ./test/ServiceHost.Tests/ServiceHost.Tests.csproj --configuration Release --no-build
+# test_script:
+# - dotnet build ./test/ServiceHost.Tests/ServiceHost.Tests.csproj --configuration Release /p:SolutionDir=$APPVEYOR_BUILD_FOLDER /p:SolutionName=DotNetRu.Server
+# - dotnet test ./test/ServiceHost.Tests/ServiceHost.Tests.csproj --configuration Release --no-build
 
 deploy: off
