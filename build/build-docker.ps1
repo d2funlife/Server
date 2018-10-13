@@ -1,7 +1,8 @@
 $Branch=$env:APPVEYOR_REPO_BRANCH
 Write-Host branch: $Branch
-Write-Host is branch: $Branch -eq "master"
+
 $IsMaster=$Branch -eq "master"
+Write-Host is branch: $IsMaster
 if ($IsMaster) {
     exit 0
 }
