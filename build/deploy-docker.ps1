@@ -6,7 +6,7 @@ if (!$IsMaster) {
 
 Write-Host Starting deploy docker image
 
-sed -i '0,/{/s/{/{\n\t"credsStore": "dotnet-server",/' ~/home/appveyor/.docker/config.json
+sed -i '0,/{/s/{/{\n\t"credsStore": "dotnet-server",/' ~/.docker/config.json
 
 $env:DOCKER_PASS | docker login --username dotnetrucd --password-stdin
 
